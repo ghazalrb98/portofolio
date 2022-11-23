@@ -1,8 +1,9 @@
 {
   "headerAnimation": {
-    "causeScrollDivExtraHeight": 1080,
+    "frameCount": 55,
+    "causeScrollDivExtraHeight": 1100,
     "ContainerHeightWidthRatio": 1.224,
-    "NavHeightWidthRatio": 0.29,
-    "NavBottomRatio": 0.201
+    "ContainerLastFirstHeightRatio": 0.233,
+    "NavHeightWidthRatio": 0.29
   }
 }

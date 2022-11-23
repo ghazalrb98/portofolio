@@ -28,12 +28,25 @@ body {
 
 #cause-scroll-div {
   position: relative;
+  margin: 0 auto;
+  animation-duration: 500ms;
+  animation-timing-function: ease-out;
+}
+
+@keyframes navExpansion {
+  0% {
+    width: 55%;
+  }
+  100% {
+    width: 100%;
+  }
 }
 
 #nav-bar {
   width: 100%;
   background-color: #f3f3f3;
   position: absolute;
+  bottom: 0;
 }
 
 .hidden {

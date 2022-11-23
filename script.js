@@ -5,6 +5,11 @@ const profilePic = document.getElementById("profile-pic");
 const causeScrollDiv = document.getElementById("cause-scroll-div");
 const navBar = document.getElementById("nav-bar");
 
+// Initial State
+let headerHeight = header.clientHeight;
+
+let headerAnimationFinished = false;
+
 function setHeight(element, height, unit) {
   element.style.height = `${height}${unit}`;
 }
@@ -25,16 +30,27 @@ window.addEventListener("resize", function () {
     header.clientWidth * config.headerAnimation.NavHeightWidthRatio,
     "px"
   );
-  setBottom(
-    navBar,
-    causeScrollDiv.clientHeight * config.headerAnimation.NavBottomRatio,
-    "px"
-  );
+  headerHeight = header.clientHeight;
 });
 
 document.addEventListener("scroll", function () {
   const scrollTopValue = Math.floor(document.documentElement.scrollTop / 20);
   profilePic.setAttribute("src", `/images/header_step${scrollTopValue}.svg`);
+
+  if (scrollTopValue === config.headerAnimation.frameCount) {
+    headerAnimationFinished = true;
+    setBottom(
+      navBar,
+      document.documentElement.clientHeight / 2 -
+        (headerHeight * config.headerAnimation.ContainerLastFirstHeightRatio) /
+          2,
+      "px"
+    );
+    navBar.classList.remove("hidden");
+    causeScrollDiv.style.animationName = "navExpansion";
+  } else {
+    navBar.classList.add("hidden");
+  }
 });
 
 setHeight(
@@ -46,10 +62,5 @@ setHeight(
 setHeight(
   navBar,
   header.clientWidth * config.headerAnimation.NavHeightWidthRatio,
-  "px"
-);
-setBottom(
-  navBar,
-  causeScrollDiv.clientHeight * config.headerAnimation.NavBottomRatio,
   "px"
 );
