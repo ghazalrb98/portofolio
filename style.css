@@ -18,12 +18,24 @@ body {
   transform: translate(-50%, -50%);
   width: 100%;
   max-width: 500px;
+  z-index: 1;
 }
 
 #profile-pic {
   width: 100%;
+  display: block;
 }
 
 #cause-scroll-div {
-  height: 213vh;
+  position: relative;
+}
+
+#nav-bar {
+  width: 100%;
+  background-color: #f3f3f3;
+  position: absolute;
+}
+
+.hidden {
+  display: none;
 }
